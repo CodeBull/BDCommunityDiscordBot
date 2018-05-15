@@ -1,5 +1,6 @@
 import path from 'path';
 import fs from 'fs';
+import steemconnect from 'sc2-sdk';
 import { Client, PrivateKey } from 'dsteem';
 import config from '../config';
 
@@ -37,6 +38,7 @@ export function doComment(author, permlink) {
 
   if (config.COMMENT_LOCATION && config.COMMENT_LOCATION !== '') {
     comment = fs.readFileSync(path.join(config.PROJECT_ROOT, config.COMMENT_LOCATION), 'utf-8');
+    comment = comment.replace(/\{STEEM_ACCOUNT\}/g, config.STEEM_ACCOUNT);
   } else {
     comment = 'You just got upvoted!';
   }
@@ -55,3 +57,6 @@ export function doComment(author, permlink) {
     }, PrivateKey.from(config.POSTING_WIF));
   }
 }
+export const SC2 = steemconnect.Initialize({
+  app: 'micro.app',
+});

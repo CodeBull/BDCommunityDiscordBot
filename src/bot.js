@@ -19,6 +19,8 @@ client.registry
   .registerGroups([
     ['steem', 'Steem Blockchain related commands'],
     ['action', 'Moderator actions'],
+    ['exchange', 'STEEM/SBD exchange related commands'],
+    ['user', 'User management related commands'],
   ])
   .registerDefaults()
   .registerCommandsIn(path.join(__dirname, 'commands'));

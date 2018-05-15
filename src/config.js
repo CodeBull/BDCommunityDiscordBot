@@ -4,7 +4,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const config = {
-  NODE: 'https://api.steemit.com',
+  NODE: 'https://rpc.buildteam.io',
   BOT_TOKEN: process.env.BOT_TOKEN,
   BOT_OWNER_ID: '412077846626959360',
   POSTING_WIF: process.env.POSTING_WIF,
@@ -16,6 +16,8 @@ const config = {
   ALLOWED_UPVOTE_REQUEST_ROLES: ['Admin', 'Moderator', 'Explorer'],
   COMMAND_PREFIX: '$',
   COMMENT_LOCATION: 'comment.md',
+  ESCROW_FEE: 0.1,
+  BITLY_TOKEN: process.env.BITLY_TOKEN,
 };
 
 export default config;
