@@ -45,11 +45,6 @@ export default class VerifyCommand extends Command {
       if (history.some(res => (res[1].op[0] === 'transfer' && res[1].op[1].to === config.STEEM_ACCOUNT && res[1].op[1].memo === user.code))) {
         db.run('UPDATE users SET active = 1 WHERE username = ? AND discordId = ?', [username, message.author.id])
           .then(() => {
-            const registerdRole = message.guild.roles.find('name', 'Registered');
-            if (registerdRole) {
-              message.member.addRole(registerdRole);
-            }
-
             message.reply('Your registration has been successful.');
           })
           .catch(err => console.log(err));
