@@ -35,7 +35,7 @@ export default class AccountInfoCommand extends Command {
     dsteem.database.getAccounts([username])
       .then(async ([data]) => {
         if (data === undefined || data === null) {
-          message.reply('user not found!');
+          message.reply('I could not find this user on STEEM!');
         } else {
           const globalProps = await dsteem.database.getDynamicGlobalProperties();
           const totalSteem = Number(globalProps.total_vesting_fund_steem.split(' ')[0]);
